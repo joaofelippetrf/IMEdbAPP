@@ -1,4 +1,6 @@
-package com.example.imedb.movieapp;
+package com.example.imedb.movieapp.interfac;
+
+import com.example.imedb.movieapp.entity.Movie;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

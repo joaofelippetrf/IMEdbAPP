@@ -1,69 +1,61 @@
 package com.example.imedb;
-
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.imedb.movieapp.ApiInterface;
-import com.example.imedb.movieapp.Movie;
-import com.example.imedb.movieapp.Apiclient;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import com.example.imedb.movieapp.entity.Movie;
+import com.example.imedb.movieapp.interfac.ApiInterface;
+import com.example.imedb.movieapp.client.Apiclient;
+import com.example.imedb.movieapp.front.MovieAdapter;
+import com.example.imedb.movieapp.front.MovieAdapter;
+import java.util.List;
+import com.example.imedb.R;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import java.util.List;
-import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView textView;
-
+    private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Referenciando a TextView
-        textView = findViewById(R.id.textView);
+        // Inicializando o RecyclerView
+        recyclerView = findViewById(R.id.recyclerViewMovies);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // Fazer a requisição à API
         ApiInterface apiInterface = Apiclient.getRetrofitInstance().create(ApiInterface.class);
         Call<List<Movie>> call = apiInterface.getMovies();  // Chama o endpoint para obter filmes
 
         call.enqueue(new Callback<>() {
-            @SuppressLint("SetTextI18n")
-
-
-
             @Override
             public void onFailure(@NonNull Call<List<Movie>> call, @NonNull Throwable t) {
                 Toast.makeText(MainActivity.this, "API request failed", Toast.LENGTH_SHORT).show();
-                Log.e("API Error", Objects.requireNonNull(t.getMessage()));
+                Log.e("API Error", t.getMessage());
             }
-            @SuppressLint("SetTextI18n")
 
             @Override
             public void onResponse(@NonNull Call<List<Movie>> call, @NonNull Response<List<Movie>> response) {
                 if (response.isSuccessful()) {
                     List<Movie> movies = response.body();
                     if (movies != null && !movies.isEmpty()) {
-                        Log.d("API Response", "Movies fetched: " + movies.size());
-                        textView.setText("Movies: \n" + movies.get(0).getOriginalTitle());
+                        // Passando os filmes para o Adapter do RecyclerView
+                        MovieAdapter adapter = new MovieAdapter(MainActivity.this, movies);
+                        recyclerView.setAdapter(adapter);
                     } else {
                         Log.d("API Response", "No movies found in response.");
-                        textView.setText("No movies found.");
                     }
                 } else {
                     Log.e("API Error", "Error code: " + response.code() + " Response: " + response.message());
-                    textView.setText("Error: " + response.code());
                 }
             }
-
-
         });
     }
 }

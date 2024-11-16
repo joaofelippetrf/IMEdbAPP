@@ -1,4 +1,4 @@
-package com.example.imedb.movieapp;
+package com.example.imedb.movieapp.entity;
 
 import com.google.gson.annotations.SerializedName;
 

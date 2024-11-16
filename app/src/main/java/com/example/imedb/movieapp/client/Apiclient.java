@@ -1,4 +1,4 @@
-package com.example.imedb.movieapp;
+package com.example.imedb.movieapp.client;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
