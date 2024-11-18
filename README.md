@@ -18,5 +18,5 @@ Frontend (Aplicativo Android)
 Java/Kotlin para desenvolvimento nativo Android.
 Retrofit para requisições HTTP ao backend.
 RecyclerView para listagem de filmes.
-Backend (Java Spring)
+
 
