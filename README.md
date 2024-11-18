@@ -1,11 +1,11 @@
-Descrição do Projeto
+
 Este projeto consiste em um aplicativo Android integrado a um backend desenvolvido com Java Spring,tendo como objetivo disponibilizar um catálago de filmes.
 
 Funcionalidades
 Aplicativo Android
 
-Listagem de filmes.
-Exibição de detalhes de filmes.
+Listagem de filmes,
+Exibição de detalhes de filmes e
 Busca por filmes.
 
 Backend em Java Spring feito no repositorio https://github.com/joaofelippetrf/Imemdb
