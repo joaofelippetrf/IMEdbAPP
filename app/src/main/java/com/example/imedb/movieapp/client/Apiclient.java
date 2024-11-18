@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Apiclient {
 
-    private static final String BASE_URL = "http://192.168.93.46:8081/";  // Use o IP correto
+    private static final String BASE_URL = "http://192.168.93.46:8081/";
 
     private static Retrofit retrofit;
 
@@ -15,7 +15,7 @@ public class Apiclient {
         if (retrofit == null) {
             // Configurando o interceptor para log
             HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
-            logging.setLevel(HttpLoggingInterceptor.Level.BODY);  // Exibe todos os detalhes das requisições
+            logging.setLevel(HttpLoggingInterceptor.Level.BODY);
 
             OkHttpClient client = new OkHttpClient.Builder()
                     .addInterceptor(logging)  // Adiciona o interceptor para logs

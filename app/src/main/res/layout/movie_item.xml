@@ -8,20 +8,31 @@
     app:cardCornerRadius="8dp"
     app:cardElevation="4dp">
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp">
 
-<LinearLayout
-android:orientation="vertical"
-android:layout_width="match_parent"
-android:layout_height="wrap_content">
+        <!-- Imagem do filme -->
+        <ImageView
+            android:id="@+id/moviePoster"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginBottom="8dp"
+            android:scaleType="centerCrop" />
+
+        <!-- Título do filme -->
+        <TextView
+            android:id="@+id/movieTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Movie Title"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp" />
 
 
-<ImageView
-    android:id="@+id/moviePoster"
-    android:layout_width="match_parent"
-    android:layout_height="200dp"
-    android:layout_marginBottom="8dp"
-    android:scaleType="centerCrop" />
 
-
-</LinearLayout>
-    </androidx.cardview.widget.CardView>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
